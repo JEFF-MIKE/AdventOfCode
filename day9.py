@@ -25,11 +25,6 @@ class Customstack:
     def push(self,item):
         self._storage.append(item)
         self._length += 1
-    def garbager(self):
-        if self._storage.count("<") == 1:
-            self._gStart = self._storage.index("<")
-        else:
-            return None
     def __str__(self):
         print("-----------------------\n")
         mloc_string = []
@@ -37,7 +32,6 @@ class Customstack:
         for i in range((len(self._storage)-1),-1,-1):
             mloc_string.append(str(self._storage[i]))
         return "\n".join(mloc_string) + "\n-----------------------"
-            
         
 def day9i():
     fileR = open("day9.txt","r")
@@ -48,9 +42,7 @@ def day9i():
     lst = [_ for _ in string]
     s = Customstack()
     i = 0
-    print(lst)
     while i < len(lst): 
-        #print(factor)
         if lst[i] == "!":
             i+=2
             continue
@@ -89,11 +81,10 @@ def day9i():
                     s.pop()
         else:
             s.push(lst[i])
-       # print(lst[i])
-        #print(factor)
         i += 1
-    print(totalSum)
-    print(garbage)
+    print("Total score of day9.txt is: ",totalSum)
+    print("Amount of collected garbage is: ",garbage)
     fileR.close()
-                    
+    return
+
 print(day9i())
