@@ -157,4 +157,4 @@ print(day3i(312051))
 
 # Please note: These are the brute force methods. The grids are generated, and
 # then the answers are received from said generated grid
-
+# kkuuuuurrrrwwwaaa
