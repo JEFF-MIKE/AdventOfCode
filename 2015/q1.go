@@ -1,22 +1,30 @@
 package main
 
 import (
-	"bufio"
-	"os"
 	"fmt"
+	"io/ioutil"
 )
 
-func main()(){
+func q1a()(){
 	// opens file
-	x := 0
-	f, _ := os.Open("q1.txt")
-	scanner := bufio.NewScanner(f)
-	for _,char := range scanner.Text(){
-		if (string(char) == "("){
-			x++
+	b, err := ioutil.ReadFile("q1.txt")
+	if err != nil{
+		fmt.Print(err)
+	}
+	x := string(b)
+	counter := 0
+	for _,char := range x {
+		if string(char) == "("{
+			counter++
+		} else if string(char) == ")"{
+			counter--
 		} else {
-			x--
+			continue // just ignore this
 		}
 	}
-	fmt.Println(x)
+	fmt.Println("The answer is:",counter)
 }
+func main()(){
+	q1a()
+}
+	
