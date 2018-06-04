@@ -1,7 +1,6 @@
 # AdventOfCode
-My solutions to AdventOfCode 2017
-Note:
-  Day 6 needs to be completed
- rest up to 9 is gucci
+My solutions for the Advent of Code programming events which occur over christmas
+# 2015
+# 2016
+# 2017
 
- 2015 also started
