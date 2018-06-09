@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"bytes"
 	"encoding/hex"
 	"crypto/md5"
 )
-func q4a(x string)(){ 
-	start := []byte{0,0,0,0,0}
+func q4a(key string)(){ 
+	start := [5]byte{0,0,0,0,0}
 	// takes in string x and hashes it 
 	// to have at least 5 zeros at the beginning
 	var output []byte
@@ -17,10 +16,7 @@ func q4a(x string)(){
 	for {
 		// don't know when it will end at all
 		i++
-		b := bytes.Buffer{} // create buffer for creating hex number
-		b.WriteString(x)
-		b.WriteString(strconv.Itoa(1048970)) // convert i to a string, and append
-		text := b.String()
+		text := key + strconv.Itoa(i)
 		hash := md5.Sum([]byte(text))
 		output = make([]byte, hex.EncodedLen(len(hash)))
 		hex.Encode(output,hash[:])
@@ -30,13 +26,12 @@ func q4a(x string)(){
 				counter++
 				if counter == 5{
 					fmt.Println(true)
-					fmt.Printf(hex.EncodeToString(output))
+					fmt.Println(output)
+					break
 				}
 			}
 		}
-			fmt.Println(true)
-			fmt.Println(hash)
-		}
+	}
 }
 
 func main(){
