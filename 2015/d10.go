@@ -10,7 +10,7 @@ func d10a(input string){
 	counter := 0
 	startCount := 0
 	var x string
-	for counter < 40 {
+	for counter < 50 {
 		var newLst []string // every iteration we want to create a newList
 		for i := range lst {
 			if startCount == 0 {
