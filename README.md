@@ -40,7 +40,7 @@ My solutions for the Advent of Code programming events which occur over christma
   - [ ] Day 7
   - [ ] Day 8
   - [ ] Day 9
-  - [ ] Day 10
+  - [x] Day 10
   - [ ] Day 11
   - [ ] Day 12
   - [ ] Day 13
