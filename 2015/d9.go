@@ -39,6 +39,7 @@ func (g *graph) addEdge(begin string,finish string,weight int) {
 }
 func (g *graph) edgeList()([]edge){
 	x := []edge{}
+
 	for _,value := range g.vertexContainer{
 		for i := range value.edgeContainer{
 			x = append(x,value.edgeContainer[i])
@@ -59,6 +60,7 @@ func (g *graph) addVertex(name string){
 func d9a(){
 	maxInt := 2147483647
 	g:= newGraph()
+	edgeList := []edge{}
 	f,err := os.Open("d9.txt")
 	if err != nil {
 		fmt.Println(err)
@@ -70,7 +72,11 @@ func d9a(){
 	for scanner.Scan(){
 		lines = append(lines,scanner.Text())
 	}
+	marked := map[string]int
 	for i := range lines{
+		if marked[n[0]] == 0 {
+			marked[n[0]] = 1
+		}
 		n := strings.Split(lines[i]," ")
 		number,_ := strconv.Atoi(n[4])
 		if g.vertexContainer[n[0]].label == ""{
@@ -84,7 +90,13 @@ func d9a(){
 		h := edge{start:n[0],end:n[2],cost:number}
 		g.vertexContainer[h.start].edgeContainer[h.end] = h
 		g.vertexContainer[h.end].edgeContainer[h.start] = h
+		edgeList = append(edgeList,h)
 	}
+	for k := range edgeList{
+
+	}
+
+	/*
 	// graph done, now time for ffloyds
 	// o could also be a 2D array
 	o := make(map[string]map[string]int)
@@ -103,6 +115,8 @@ func d9a(){
 		o[x][y] = c
 		o[y][x] = c
 	}
+	*/
+	/*
 	for v,_ := range g.vertexContainer{
 		for w,_ := range g.vertexContainer{
 			for x,_ := range g.vertexContainer{
@@ -113,10 +127,24 @@ func d9a(){
 			}
 		}
 	}
+	*/
 	fmt.Println(o)
+	labelList := make(map[string]int)
 	for key,_ := range g.vertexContainer{
-		fmt.Println(key)
+		labelList[key] = 0
 	}
+	min := maxInt
+	total := 0
+	flag := true
+	for flag {
+		for key,value := range o{
+			for key1,value1 := range value{
+				
+			}
+		}
+	}
+	}
+	/*
 	min := maxInt
 	for _,value := range o{
 		minValue := 0
@@ -129,6 +157,7 @@ func d9a(){
 		}
 	}
 	fmt.Println(min)
+	*/
 //fmt.Println(edgeList)
 }
 
