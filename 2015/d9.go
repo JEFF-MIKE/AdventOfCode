@@ -75,7 +75,7 @@ func d9a(){
 	marked := map[string]int
 	for i := range lines{
 		if marked[n[0]] == 0 {
-			marked[n[0]] = 1
+			marked[n[0]] = 2
 		}
 		n := strings.Split(lines[i]," ")
 		number,_ := strconv.Atoi(n[4])
@@ -92,8 +92,19 @@ func d9a(){
 		g.vertexContainer[h.end].edgeContainer[h.start] = h
 		edgeList = append(edgeList,h)
 	}
-	for k := range edgeList{
-
+	flag := true
+	current := ""
+	total := 0
+	for flag {
+		min := maxInt
+		if marked[current] == 1 {
+			return total
+		}
+		for k := range edgeList {
+			if edgeList[k].cost < min && (marked[edgelist[k].start]==2 || marked[edgeList[k].end]==2) {
+				min = edgeList[k].cost
+			} 
+		}
 	}
 
 	/*
