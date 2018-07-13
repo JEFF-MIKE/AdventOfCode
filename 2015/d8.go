@@ -20,7 +20,7 @@ func d8i()(){
 		lines = append(lines,scanner.Text())
 	}
 	for i := range lines{
-		n := strings.Split(lines[i]," ")
+		n := strings.Split(lines[i],"")
 		fmt.Println(n)
 	}
 }
