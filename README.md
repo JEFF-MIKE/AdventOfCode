@@ -50,7 +50,7 @@ My solutions for the Advent of Code programming events which occur over christma
   - [ ] Day 17
   - [ ] Day 18
   - [ ] Day 19
-  - [ ] Day 20
+  - [x] Day 20
   - [ ] Day 21
   - [ ] Day 22
   - [ ] Day 23
