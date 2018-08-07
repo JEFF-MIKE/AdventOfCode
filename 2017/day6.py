@@ -1,55 +1,53 @@
 def day6():
-    counter = 0
-    flag = True
-    fileR = open('day6input.txt',"r")
-    states = []
-    lst = None
-    for line in fileR: # it's one line eggs dee
-        splitter = line.split("\t")
-        splitter[-1] = splitter[-1].strip()
-        lst = [int(x) for x in splitter]
-    '''
-    for i in range(len(lst)):
-        state.append(lst[i])
+    listContainer = []
+    answerPart=0
+    firstLoop = 0
+    listInQuestion = []
+    # just iterate through the list and
+    # then balance as required
+    stateCounter = 0 # answer to question
+    fileR = open("day6input.txt","r")
+    for line in fileR:
+        x = [int(y) for y in line.split('\t')]
+    listContainer.append(x[:])
+    maxi = 0 # max int
+    workingIndex = 0 # iterator
     while True:
-        #print("lst",lst)
-        #print("state",state)
-        current = 0
+        stateCounter+=1
+        # have to reset maxi to zero here
         maxi = 0
-        indexer = 0
-        for i in range(len(lst)):
-            if lst[i] > maxi:
-                maxi = lst[i]
-                current = i
-        #print("Maxi is: ",maxi,"at index: ",current)
-        indexer = current + 1
-        if indexer == len(lst):
-            indexer = 0
-        lst[current] = 0
-        #print("current",current)
-        while maxi != 0:
-            lst[indexer] += 1
-            indexer += 1
-            if indexer == len(lst):
-                indexer = 0
-            maxi -= 1
-        counter += 1
-        if lst == state:
-            break
-    return counter
-    '''
-    while lst not in states:
-        states.append(lst[:])
-        print(states)
-        m = max(lst)
-        i = lst.index(m)
-        lst[i] = 0
-        while m:
-            i =(i+1)%len(lst)
-            lst[i] += 1
-            m-= 1
-        counter += 1
-    return counter
-print(day6())
-                
-                    
+        workingIndex = 0
+        #print("performing while true")
+        # find the max value first
+        for i in range(len(x)):
+            if x[i] > maxi:
+                maxi = x[i]
+                workingIndex = i
+        # now balance as required
+        value = maxi
+        x[workingIndex] = 0
+        workingIndex+=1 # goes to next element
+        while value != 0:
+            # reset workingIndex to 0
+            # if it is out of range
+            if workingIndex == len(x):
+                workingIndex = 0
+            x[workingIndex] += 1
+            value -=1
+            workingIndex+=1
+        # now we do a check on the arrays to
+        # see if their states are the same again or not
+        #print(x)
+        for k in listContainer:
+            if x == k:
+                if answerPart == 0:
+                    print("The answer to the first part is: ",stateCounter)
+                    firstLoop = stateCounter
+                    answerPart+=1
+                    listContainer = [] # reset the list
+                    break
+                else:
+                    print("The answer to the second part is:",(stateCounter-firstLoop))
+                    return None
+        listContainer.append(x[:])
+day6()
