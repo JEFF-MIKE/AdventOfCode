@@ -16,7 +16,7 @@ My solutions for the Advent of Code programming events which occur over christma
   - [x] Day 12
   - [ ] Day 13
   - [ ] Day 14
-  - [ ] Day 15
+  - [x] Day 15
   - [x] Day 16
   - [ ] Day 17
   - [ ] Day 18
